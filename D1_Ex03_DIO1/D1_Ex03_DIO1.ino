@@ -3,7 +3,6 @@
 // and Serial Port
 // Hardware: WeMos D1 mini
 //           1-Button Shield
-// Author  : karl1@hartinger1.at
 const int pinButton=D3;
 const int pinLED=D4;
 
