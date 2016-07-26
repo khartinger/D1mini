@@ -1,7 +1,7 @@
 //_____D1_Ex04_Ain2Serial.ino______________________20160726_____
 // Analog in value sent to serial port every second
 // Hardware: WeMos D1 mini
-//           trimmer (poti)at pins GND-A0-3V3
+//           trimmer (poti) at pins GND-A0-3V3
 const int pinAin=A0;
 
 void setup() {
