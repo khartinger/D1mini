@@ -1,9 +1,22 @@
-void setup() {
-  // put your setup code here, to run once:
+//_____D1_Ex03_DIO1.ino____________________________20160726_____
+// Status of button (D3=DGPIO0) is shown on blue LED (D4=GPIO2)
+// and Serial Port
+// Hardware: WeMos D1 mini
+//           1-Button Shield
+// Author  : karl1@hartinger1.at
+const int pinButton=0;
+const int pinLED=2;
 
+void setup() {
+ Serial.begin(9600);              // init serial comm 9600 bps
+ pinMode(pinLED, OUTPUT);
+ pinMode(pinButton, INPUT);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
+ int button_;
+ button_= digitalRead(pinButton);
+ digitalWrite(pinLED, button_);
+ if(button_==0)
+  Serial.println("button pressed!");
 }
