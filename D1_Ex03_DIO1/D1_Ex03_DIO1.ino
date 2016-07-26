@@ -4,8 +4,8 @@
 // Hardware: WeMos D1 mini
 //           1-Button Shield
 // Author  : karl1@hartinger1.at
-const int pinButton=0;
-const int pinLED=2;
+const int pinButton=D3;
+const int pinLED=D4;
 
 void setup() {
  Serial.begin(9600);              // init serial comm 9600 bps
