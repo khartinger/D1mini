@@ -11,7 +11,7 @@
 #include <Adafruit_GFX.h>
 
 // default pins: SCL=D1=GPIO5, SDA=D2=GPIO4
-#define OLED_RESET 0  // GPIO0
+#define OLED_RESET 0              // OLED_RESET=D3=GPIO0
 Adafruit_SSD1306 display(OLED_RESET);
 
 void setup()   {
