@@ -1,19 +1,19 @@
-//_____D1_Ex12_WifiClientButton____________________20160729_____
-// Sends a request to server 192.168.0.123 if button (D3=DGPIO0)
-//   is pressed. If ther is an answer, the D1mini blue LED 
-//   blinks.
+//_____D1_Ex14a_WifiClientButton___________________20160729_____
+// Sends a request to access point 192.168.1.1 if button
+//   (D3=DGPIO0) is pressed. If there is an answer, the D1mini 
+//   blue LED blinks.
 // IF DEBUG is 1, an answer is sent to Serial (115200 baud)
 // All client functions a placed in header file
-//   D1_Ex12_WifiClientButton.h
+//   D1_Ex14a_WifiClientButton.h
 // Hardware: WeMos D1 mini
 //           1-Button Shield
 #include <ESP8266WiFi.h>
 #include <WiFiClient.h>
-#define DEBUG 1
+#define DEBUG 0
 const int pinButton=D3;
 const int pinLED=D4;
 int button_old=1;
-#include "D1_Ex12_WifiClientButton.h"
+#include "D1_Ex14a_WifiClientButton.h"
 
 //_____setup routine____________________________________________
 void setup(void){

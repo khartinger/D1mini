@@ -1,13 +1,12 @@
-//_____D1_Ex12_WifiClientButton.h__________________20160729_____
-#ifndef D1_EX12_WIFICLIENTBUTTON_H
-#define D1_EX12_WIFICLIENTBUTTON_H
-#include "myWifiData.h"  // contains private *ssid and *password
-//const char *ssid = "*****";
-//const char *password = "*****";
-IPAddress ip(192,168,0,101);
-IPAddress gateway(192,168,0,1);
+//_____D1_Ex14a_WifiClientButton.h_________________20160729_____
+#ifndef D1_EX14A_WIFICLIENTBUTTON_H
+#define D1_EX14A_WIFICLIENTBUTTON_H
+const char* ssid = "D1mini           ";// 17 chars
+const char* password = "12345678";     // min. 8 chars or ""
+IPAddress ip(192,168,1,101);
+IPAddress gateway(192,168,1,1);
 IPAddress subnet(255,255,255,0);
-char* host = "192.168.0.123";    // or "http://..."
+char* host = "192.168.1.1";    // or "http://..."
 int httpPort=80;
 WiFiClient client;
 
@@ -24,7 +23,7 @@ void setup_webclient()
   if(DEBUG) Serial.print(".");
  }
  //-----send connection info to serial interface----------------
- if(DEBUG) 
+ if(DEBUG)
  {
   Serial.println("");
   Serial.print("Connected to ");
@@ -63,9 +62,9 @@ void loop_webclient(String uri)
   delay(10);
   if(DEBUG) Serial.println("-----Response:-------------");
 /* 
+  //-----quick check of response--------------------------------
   if(DEBUG)
   {
-   //-----quick check of response-------------------------------
    if(client.available()) Serial.println("OK");             // |
                      else Serial.println("ERROR");          // |
   }
@@ -73,7 +72,7 @@ void loop_webclient(String uri)
   //-----slow: read all lines of server reply, print to Serial---
   if(DEBUG)
   {
-   String line="";
+   String line="";	
    while(client.available()){
     line = client.readStringUntil('\r');
     Serial.print(line);
@@ -81,6 +80,8 @@ void loop_webclient(String uri)
    Serial.println();
    Serial.println("-----connection closed-----");
   }
+  //-----stop client and turn LED off---------------------------
+  client.stop();
   digitalWrite(pinLED, 1);       // LED off
  }
 }
