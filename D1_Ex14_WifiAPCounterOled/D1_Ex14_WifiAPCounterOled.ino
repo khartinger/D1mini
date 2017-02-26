@@ -22,6 +22,7 @@ void setup(void){
  digitalWrite(pinLED, 1);                    // LED off
  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);  // I2C addr 0x3C
  display.setTextColor(WHITE);
+ display.setFont(NULL);
  setup_accesspoint();
 }
 
