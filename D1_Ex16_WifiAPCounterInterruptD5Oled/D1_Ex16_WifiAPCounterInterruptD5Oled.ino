@@ -1,8 +1,8 @@
-//_____D1_Ex16_WifiAPCounterInterruptD5Oled________20160911_____
+//_____D1_Ex16_WifiAPCounterInterruptD5Oled___160911-170125_____
 // Accesspoint listens to Port 80 and increments counter 
 // on request or increments counter on falling edge of D5.
-// + Push Button more then 3 sec  resets counter
-// + send 10.0.0.123/resetcounter resets counter
+// + Push Button more then 2 sec  resets counter
+// + send 192.168.1.111/resetcounter resets counter
 // + blue led indicates a http-request
 // HTTP-Answer   : counter value
 // OLED-Display  : counter value and client ip
@@ -30,6 +30,7 @@ void setup(void){
  digitalWrite(pinLED, 1);                    // LED off
  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);  // I2C addr 0x3C
  display.setTextColor(WHITE);
+ display.setFont(NULL);
  setup_accesspoint();
 }
 

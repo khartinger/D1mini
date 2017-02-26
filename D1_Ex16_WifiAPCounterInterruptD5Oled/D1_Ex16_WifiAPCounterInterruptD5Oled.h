@@ -3,9 +3,9 @@
 #define D1_EX16_WIFIAPCOUNTERINTERRUPTD5OLED_H
 const char* ssid = "D1mini           ";// 17 chars
 const char* password = "12345678";     // min. 8 chars or ""
-IPAddress ip(10,0,0,123);
-IPAddress gateway(10,0,0,1);
-IPAddress subnet(255,0,0,0);
+IPAddress ip(192,168,1,111);
+IPAddress gateway(192,168,1,1);
+IPAddress subnet(255,255,255,0);
 #define PIN_BUTTON D5                  // PIN_BUTTON=D5=GPIO14
 #define OLED_RESET D3                  // OLED_RESET=D3=GPIO0
 Adafruit_SSD1306 display(OLED_RESET);
@@ -47,7 +47,7 @@ void doInterrupt(void)
   String sCounter = String(requestCounter);
   String sLine56 = "--local---          ";
   display_oled(sCounter, sLine56);
-  endMillis = millis()+3000;
+  endMillis = millis()+2000;
   Serial.println("Falling Edge: "+sCounter);
  }
  else
