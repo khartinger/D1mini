@@ -31,3 +31,5 @@
 # Debug files
 *.dSYM/
 *.su
+D1_Ex30_WifiAPCounterIntD5OledConf/fonts/Thumbs.db
+*.db
