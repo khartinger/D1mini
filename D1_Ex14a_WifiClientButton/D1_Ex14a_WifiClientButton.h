@@ -3,7 +3,7 @@
 #define D1_EX14A_WIFICLIENTBUTTON_H
 const char* ssid = "D1mini           ";// 17 chars
 const char* password = "12345678";     // min. 8 chars or ""
-IPAddress ip(192,168,1,101);
+IPAddress ip(192,168,1,105);
 IPAddress gateway(192,168,1,1);
 IPAddress subnet(255,255,255,0);
 char* host = "192.168.1.1";    // or "http://..."
