@@ -7,6 +7,7 @@
 void handleRoot()
 {
  digitalWrite(PIN_BLUE_LED, 0);        // *** blue LED on  ***
+ Serial.println("Request from "+server.client().remoteIP().toString());
  String s1="Hello from D1_Ex31_clienthost_D3";
  server.send(200, "text/plain", s1);
  digitalWrite(PIN_BLUE_LED, 1);        // *** blue LED off ***
