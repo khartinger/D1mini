@@ -11,7 +11,7 @@
 //           1-Button Shield
 #include <ESP8266WiFi.h>
 #include <WiFiClient.h>
-const int pinButton=D3;
+const int pinButton=D5;
 const int pinLED=D4;
 int button_old=1;
 #include "D1_Ex30a_WifiClientButtonConfS.h"

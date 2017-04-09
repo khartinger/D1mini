@@ -18,7 +18,7 @@ char      sign_[3]="IP";
 char      name_[NAME_SIZE+1]="D1mini_AP111";
 char      ssid_[SSID_SIZE+1]="D1mini           "; // 17 chars
 char      pass_[PASS_SIZE+1]="12345678";          // min. 8 char
-IPAddress ip(192,168,1,111);
+IPAddress ip(192,168,1,123);
 IPAddress gateway(192,168,0,1);
 IPAddress subnet(255,255,252,0);
 ESP8266WebServer server(80);
