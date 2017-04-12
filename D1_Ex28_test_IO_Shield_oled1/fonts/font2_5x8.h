@@ -1,4 +1,6 @@
-//_____font2_5x8.h____________________________KH_____170111_____
+//_____font2_5x8.h_____________________KH_____170111-170409_____
+#ifndef FONT2_5x8_H
+#define FONT2_5x8_H
 const uint8_t font2_5x8Bitmaps[] PROGMEM = {
  0x00, 0x00, 0x00, 0x00, 0x00, // 0x20 ' '
  0x21, 0x08, 0x42, 0x00, 0x80, // 0x21 '!'	
@@ -460,3 +462,4 @@ const GFXfont font2_5x8 PROGMEM = {
 // Approx. .... bytes
 // 0x00, 0x1B, 0x29, 0x49, 0xA0, // 0xDF = 223 Alpha
 // 0x21, 0x1D, 0x5A, 0xB8, 0x84, // 0x9D = 157 'Ø'
+#endif
