@@ -57,6 +57,7 @@ void setup(void){
   {
    f.println(123);
    f.println("ABC");
+   f.println("XYZ");
    f.close();
    Serial.println("=> file created :)");
    //-----------------------------------------------------------
