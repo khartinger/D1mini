@@ -14,7 +14,7 @@
 #include <Adafruit_GFX.h>
 
 const int pinAin=A0;
-#define OLED_RESET 0              // OLED_RESET=D3=GPIO0
+#define OLED_RESET D0              // OLED_RESET=D3=GPIO0
 Adafruit_SSD1306 display(OLED_RESET);
 
 //_____show value and client ip on oled-display_________
