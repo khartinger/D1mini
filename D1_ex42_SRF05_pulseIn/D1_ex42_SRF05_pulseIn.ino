@@ -1,4 +1,4 @@
-//_____D1_ex42_SRF05_pulseIn.ino______________180330-180330_____
+//_____D1_Ex42_SRF05_pulseIn.ino______________180330-180330_____
 // Measure distance with a ultrasonic sensor HY-SRF05
 // every two seconds and print result to Serial. 
 // Pulse width is measured using pulseIn (max. 30ms blocking)
