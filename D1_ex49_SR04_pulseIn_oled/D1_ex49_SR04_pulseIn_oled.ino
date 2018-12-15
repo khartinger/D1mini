@@ -1,10 +1,10 @@
-//_____D1_Ex49_SR04_pulseIn_oled.ino__________180330-181101_____
+//_____D1_Ex49_SR04_pulseIn_oled.ino__________180330-181215_____
 // Measure distance with a ultrasonic sensor HC-SR04 (HY-SRF05)
 // every second and print result to oled 0.66". 
 // Pulse width is measured using pulseIn (max. 30ms blocking)
 // Hardware: 1. WeMos D1 mini
 //           2. Ultrasonic sensor HY-SRF05
-//           3. OLED Shield: SSD1306, 64x48 pixel, I2C (0x3C)
+//           3. OLED Shield: 0.66", SSD1306, 64x48px, I2C (0x3C)
 // Connect ultrasonic sensor:
 // Do not connect echo pin (5V) directly to D1 mini (3V3)!
 // On D1 mini not every pin is suitable for connecting to
@@ -21,26 +21,29 @@
 // Macro US2CM: convert measured PWM time [us] to distance [cm].
 // Formula for approximate speed of sound in dry (0% humidity)
 // air see https://en.wikipedia.org/wiki/Speed_of_sound
-// Created by Karl Hartinger, November 01, 2018.
+// Created by Karl Hartinger, December 15, 2018.
 // Last modified: -
 // Released into the public domain.
 //
-#include "src/screen1/D1_class_Screen1.h"
-#define US2CM(us,T)     ((331.3+0.606*T)*us/20000)
-#define PIN_TRIG        D3             // D4
-#define PIN_ECHO        D5             //
+#define  VERSION49  "2018-12-15 D1_Ex49_SR04_pulseIn_oled"
+#define  FUNCTION49 "Measure distance with a ultrasonic sensor HC-SR04"
+#define  US2CM(us,T)    ((331.3+0.606*T)*us/20000)
+#define  PIN_TRIG            D3      // D4
+#define  PIN_ECHO            D5      //
+#define  OLED_RESET          RST     // D3=GPIO0, D0=GPIO16
+#include "src/screen1a/D1_class_Screen1a.h"
 int T=20.0;                            // Temperature in deg C
 Screen1 display_;                      // display object
 
 void setup() {
- Serial.begin(115200);Serial.println();// init serial comm
+ Serial.begin(115200); Serial.println("\r\n"+String(VERSION49));
  pinMode(PIN_TRIG, OUTPUT);            // 
  pinMode(PIN_ECHO, INPUT);             //
  digitalWrite(PIN_TRIG, LOW);          // prepare for plus pulse
- Serial.println("\nHY-SRF05 started"); // next line, info text
+ Serial.println("HY-SRF05 started");   // next line, info text
  //-----init oled-----------------------------------------------
  display_.screen112Clear(1,"ABSTAND",'c');
- display_.screen112(4,"1.11.18 KH",'c');
+ display_.screen112(4,"15.12.18KH",'c');
 }
  
 void loop()
