@@ -7,21 +7,21 @@
 // Use different connections depending on which pins you use of
 // D1 mini (reason: D3,D4 10k Pull-up, D8 10k Pull-down)
 //
-// VCC------------------5V      or     VCC----------------5V
-// Trig-----------------D5             Trig---------------D4
-// Echo---|4k7|---*-----D6             Echo-----|6k8|-----D3
+// VCC------------------5V
+// Trig-----------------D3
+// Echo---|4k7|---*-----D5
 //                |
 //               10k
 //                |
-// GND------------*-----GND            GND----------------GND
-//
+// GND------------*-----GND
+// Note: D3 not usable for echo because of Pull-up-Resistor 10k
 // Macro US2CM: convert measured PWM time [us] to distance [cm].
 // Formula for approximate speed of sound in dry (0% humidity)
 // air see https://en.wikipedia.org/wiki/Speed_of_sound
 // 
 #define US2CM(us,T)     ((331.3+0.606*T)*us/20000)
-#define PIN_TRIG        D5   // or D4
-#define PIN_ECHO        D6   // or D3
+#define PIN_TRIG        D3 // D5 or D4
+#define PIN_ECHO        D5 // D6
 int T=20.0;                            // Temperature in deg C
 
 void setup() {
@@ -38,10 +38,13 @@ void loop()
  float distanceCmf;                    //distance as float value
  //-----do measuring--------------------------------------------
  Serial.println("Start measuring..."); // info text
+ digitalWrite(PIN_TRIG, LOW);          // prepare for plus pulse
+ delayMicroseconds(2);
  digitalWrite(PIN_TRIG, HIGH);         // start pulse
  delayMicroseconds(11);                // wait 11us (min.: 10us)
  digitalWrite(PIN_TRIG, LOW);          // end of pulse
- durationUs = pulseIn(PIN_ECHO, HIGH, 30000); // measure time
+ durationUs = pulseIn(PIN_ECHO, HIGH, 5000); // measure time
+ Serial.print("usec="+String(durationUs)+" --> ");
  distanceCm = durationUs / 29.1 / 2 ;  // calculate distance as
  distanceCmf = US2CM(durationUs,T);    // long and float
  //-----print result--------------------------------------------
@@ -55,4 +58,5 @@ void loop()
   Serial.println("cm (long)");         // print unit
  }
  delay(2000);                          // wait 2 seconds
+
 }
