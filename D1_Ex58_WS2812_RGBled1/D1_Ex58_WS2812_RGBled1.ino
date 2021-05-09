@@ -1,4 +1,4 @@
-//_____D1_Ex58_WS2812_RGBled1.cpp_____________210507-210507_____
+//_____D1_Ex58_WS2812_RGBled1.ino_____________210507-210507_____
 // This program shows the use of ONE RGB-Led WS2812 ("NeoPixel")
 // e.g. for color indication of the operating state of a system
 // (red = stop, green = active etc.).
