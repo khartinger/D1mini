@@ -4,7 +4,9 @@
 // If Button is pressed more than 2sec, LED is turned off
 // 
 // Hardware: WeMos D1 mini
-//           1-Button Shield
+//           1-Button Shield (add 100kOhm resistor to 3V3!)
+// 2022-08-28 Add ICACHE_RAM_ATTR
+
 extern "C" {
 #include "user_interface.h"
 }

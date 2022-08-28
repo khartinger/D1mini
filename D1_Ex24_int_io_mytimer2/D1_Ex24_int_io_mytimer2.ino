@@ -4,11 +4,12 @@
 // If Button is pressed more than 2sec, LED blinks quickly
 // 
 // Hardware: WeMos D1 mini
-//           1-Button Shield
+//           1-Button Shield (add 100kOhm resistor to 3V3!)
+// 2022-08-28 Add ICACHE_RAM_ATTR
 extern "C" {
 #include "user_interface.h"
 }
-const int pinButton=D5;
+const int pinButton=D3;
 const int pinLED=D4;
 os_timer_t myTimer;
 
@@ -50,7 +51,7 @@ void setup() {
  pinMode(pinButton, INPUT);
  digitalWrite(pinLED, 1);
  //-----io interrupt--------------------------------------------
- attachInterrupt(digitalPinToInterrupt(pinButton), io_ISR, CHANGE);     // FALLING,...
+ attachInterrupt(pinButton, io_ISR, CHANGE);     // FALLING,...
 }
 
 void loop() {
