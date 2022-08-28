@@ -8,12 +8,12 @@
 extern "C" {
 #include "user_interface.h"
 }
-const int pinButton=D3;
+const int pinButton=D5;
 const int pinLED=D4;
 os_timer_t myTimer;
 
 //_____io interrupt service routine_____________________________
-void io_ISR(void)
+ICACHE_RAM_ATTR void io_ISR(void)
 {
  if(digitalRead(pinButton)==0)
  { //-----falling edge = Button pressed-------------------------
@@ -31,7 +31,7 @@ void io_ISR(void)
 }
 
 //_____mytimer interrupt service routine #1_____________________
-void myTimer_ISR_1(void *pArg) {
+ICACHE_RAM_ATTR void myTimer_ISR_1(void *pArg) {
  digitalWrite(pinLED, 1);                       //LED off
  //-----start blink---------------------------------------------
  os_timer_disarm(&myTimer);                     //stopp timer
@@ -40,7 +40,7 @@ void myTimer_ISR_1(void *pArg) {
 }
 
 //_____mytimer interrupt service routine #2_____________________
-void myTimer_ISR_2(void *pArg) {
+ICACHE_RAM_ATTR void myTimer_ISR_2(void *pArg) {
  digitalWrite(pinLED, digitalRead(pinLED)^1);    // invert LED
 }
 
@@ -50,7 +50,7 @@ void setup() {
  pinMode(pinButton, INPUT);
  digitalWrite(pinLED, 1);
  //-----io interrupt--------------------------------------------
- attachInterrupt(pinButton, io_ISR, CHANGE);     // FALLING,...
+ attachInterrupt(digitalPinToInterrupt(pinButton), io_ISR, CHANGE);     // FALLING,...
 }
 
 void loop() {

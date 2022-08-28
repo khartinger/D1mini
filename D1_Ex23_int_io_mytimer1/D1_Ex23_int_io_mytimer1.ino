@@ -13,7 +13,7 @@ const int pinLED=D4;
 os_timer_t myTimer;
 
 //_____io interrupt service routine_____________________________
-void io_ISR(void)
+ICACHE_RAM_ATTR void io_ISR(void)
 {
  if(digitalRead(pinButton)==0)
  { //-----falling edge = Button pressed-------------------------
@@ -31,7 +31,7 @@ void io_ISR(void)
 }
 
 //_____mytimer1 interrupt service routine_______________________
-void myTimer_ISR(void *pArg) {
+ICACHE_RAM_ATTR void myTimer_ISR(void *pArg) {
  digitalWrite(pinLED, 1);                       //LED off
 }
 
@@ -41,7 +41,7 @@ void setup() {
  pinMode(pinButton, INPUT);
  digitalWrite(pinLED, 1);
  //-----io interrupt--------------------------------------------
- attachInterrupt(pinButton, io_ISR, CHANGE);     // FALLING,...
+ attachInterrupt(digitalPinToInterrupt(pinButton), io_ISR, CHANGE); // FALLING,...
 }
 
 void loop() {
